@@ -1,0 +1,83 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     parsejson-weka.filters.unsupervised.attribute.Remove-R10,26,28
+Instances:    8744
+Attributes:   27
+              probe_id
+              dsfail_rt
+              dsfail_size
+              dsfail_flags
+              dsfail_rcode
+              dsfail_qcount
+              dsfail_acount
+              dsfail_nscount
+              dsfail_arcount
+              nxd_rt
+              nxd_size
+              nxd_rcode
+              dnskey_rt
+              dnskey_size
+              dnskey_flags
+              dnskey_rcode
+              nsid_rt
+              nsid_flags
+              nsid_rcode
+              chaos1_rt
+              chaos1_size
+              chaos1_rcode
+              chaos1_version_bind
+              chaos1_version_hostname
+              whoami_rt
+              whoami_asn
+              ok
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+dsfail_flags <= 33153: 0 (79.0)
+dsfail_flags > 33153
+|   dnskey_flags <= 33664
+|   |   chaos1_rt <= 2.089
+|   |   |   whoami_rt <= 20.759: 1 (108.0)
+|   |   |   whoami_rt > 20.759
+|   |   |   |   dnskey_size <= 99: 1 (16.0/1.0)
+|   |   |   |   dnskey_size > 99: 0 (4.0)
+|   |   chaos1_rt > 2.089: 1 (8495.0/2.0)
+|   dnskey_flags > 33664: 0 (42.0)
+
+Number of Leaves  : 	6
+
+Size of the tree : 	11
+
+
+Time taken to build model: 0.43 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8736               99.9085 %
+Incorrectly Classified Instances         8                0.0915 %
+Kappa statistic                          0.9673
+Mean absolute error                      0.0014
+Root mean squared error                  0.0304
+Relative absolute error                  4.8353 %
+Root relative squared error             25.2783 %
+Total Number of Instances             8744     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         0.063      0.999     1         1          0.964    1
+                 0.938     0          1         0.938     0.968      0.964    0
+Weighted Avg.    0.999     0.062      0.999     0.999     0.999      0.964
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 8616    0 |    a = 1
+    8  120 |    b = 0
+
