@@ -2,7 +2,7 @@
 * test
 
 ![alt text](https://github.com/recdnsfp/recdnsfp.github.io/blob/master/images/vingerprintDNS.jpg "recdnsfp")
-![Image Title](%base_url%/images/vingerprintDNS.jpg)
+![Image Title](%base_url%/images/vingerprintDNS200.png)
 
 image:
   feature: vingerprintDNS200.png
