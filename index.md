@@ -126,7 +126,7 @@ Our goal is to identify hijacked resolvers by analyzing their fingerprints, in o
 |9121   |  1|    0|
 |N/A    |  7|    0|
 
-## Weka
+## Weka tree
 ![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/weka-tree.png)
 
 # Interesting cases
