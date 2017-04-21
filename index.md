@@ -2,12 +2,13 @@
 ![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/vingerprintDNS.jpg)
 
 # Problem
+![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/DNS_hijacking.png)
+
 Google and a few other companies provide open dns resolvers to the people around the globe. Unfortunately it may happen that the resolver was hijacked and used for different purposes, such as redirecting to malicious pages or to block certain addresses (censorship).
 
 Our goal is to identify hijacked resolvers by analyzing their fingerprints, in order to increase safety of Internet users. To do that, we utilize data collected via RIPE Atlas (atlas.ripe.net).
 
 # Solution
-
 Our solution to the problem is based on observing characteristic features in replies to DNS queries. A hijacked server will likely run different software than the legitimate server, thus it should be possible to spot some small differences in server behavior. We build “fingerprints” of recursive DNS servers, or “feature vectors”. Next, we use machine learning algorithms to train computer to be able to discern between a legitimate server and a hijacked one.
 
 For that purpose, we use the following features:
