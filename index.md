@@ -7,7 +7,6 @@ Google and a few other companies provide open dns resolvers to the people around
 Our goal is to identify hijacked resolvers by analyzing their fingerprints, in order to increase safety of Internet users. To do that, we utilize data collected via RIPE Atlas (atlas.ripe.net).
 
 # Solution
-# Untitled
 
 Our solution to the problem is based on observing characteristic features in replies to DNS queries. A hijacked server will likely run different software than the legitimate server, thus it should be possible to spot some small differences in server behavior. We build “fingerprints” of recursive DNS servers, or “feature vectors”. Next, we use machine learning algorithms to train computer to be able to discern between a legitimate server and a hijacked one.
 
@@ -43,6 +42,14 @@ Finally, using a separate testing dataset, we classify the fingerprints into two
 
 
 # Implementation
+We used all RIPE Atlas probes (~9000 probes) to send DNS queries to 8.8.8.8. Each probe issued several queries, a single query covered one of the features described above (e.g. DNSSEC validation, IPv6 only-domain reachability, NXDOMAIN redirection, …). Next, we parse the results (many JSON files) into single ARFF file using parsejson.py. Finally, we use the ml.py script to train a model, and to test the model on testing dataset.
+
+
+Below are links to resources we based on: 
+
+* Measurements’ templates: [_https://github.com/recdnsfp/ripe_atlas_api_scipts_](https://github.com/recdnsfp/ripe_atlas_api_scipts)
+* Collected data: [_https://github.com/recdnsfp/datasets_](https://github.com/recdnsfp/datasets)
+* Tools: parsejson.py and ml.py: [_https://github.com/recdnsfp/parsejson_](https://github.com/recdnsfp/parsejson) 
 
 
 # Results
