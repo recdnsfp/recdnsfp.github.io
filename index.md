@@ -275,6 +275,6 @@ Our fingerprinting approach can also be used to detect a somehow opposite proble
 # Credits
 Made on RIPE DNS measurements hackathon by:
 * Pawel Foremski
-* Maciej Andzinski
+* Maciej Andziński
 * Mateusz Kaczanowski
 * Marta van der Haagen (graphics)
