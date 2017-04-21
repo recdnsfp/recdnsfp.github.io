@@ -266,3 +266,8 @@ probability for id 24900 being 1 is 0.7
 probability for id 28541 being 0 is 0.9
 test: ok=4347   err=0
 ```
+
+# Conclusions
+We did our analysis only for Google Public DNS, but we highlight that our method is not limited to Google, and can easily be applied to other operators as well.
+
+Our fingerprinting approach can also be used to detect a somehow opposite problem: an ISP pretending to be operating their own caching recursive DNS servers, but in reality redirecting their traffic to Google or OpenDNS resolvers.
