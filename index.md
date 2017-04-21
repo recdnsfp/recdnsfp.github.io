@@ -7,6 +7,39 @@ Google and a few other companies provide open dns resolvers to the people around
 Our goal is to identify hijacked resolvers by analyzing their fingerprints, in order to increase safety of Internet users. To do that, we utilize data collected via RIPE Atlas (atlas.ripe.net).
 
 # Solution
+# Untitled
+
+Our solution to the problem is based on observing characteristic features in replies to DNS queries. A hijacked server will likely run different software than the legitimate server, thus it should be possible to spot some small differences in server behavior. We build “fingerprints” of recursive DNS servers, or “feature vectors”. Next, we use machine learning algorithms to train computer to be able to discern between a legitimate server and a hijacked one.
+
+For that purpose, we use the following features:
+
+* Querying for “dnssec-failed.org”
+    * This domain has invalid DNSSEC records, thus a validating resolver should reply with an error. Instead, we’ve seen servers replying with NOERROR and redirects us to rogue IP addresses.
+    * We record the following features: request time (how long it took), reply size, header flags, rcode, counts of records in each section of DNS reply.
+* Querying for a non-existent domain
+    * The server should reply with NXDOMAIN.
+    * We record: request time, reply size, rcode.
+* Querying for DNSKEY with a 512-byte response size limit. (RFC 4034)
+    * The server should set the TC (truncated) flag in the response. Google servers don’t send any replies in such a case.
+    * We record: time, size, header flags, rcode.
+* Querying for NSID (RFC 5001)
+    * If configured to do so, the server should give its DNS Name Server Identifier.
+    * We record: time, header flags, rcode.
+* CHAOS TXT queries for bind.version and hostname.bind (RFC 4892)
+    * The server may reply with information on the software and/or host running the resolver.
+    * We record: times, sizes, rcodes, and binary flags if the query succeeded.
+* Querying for “whoami.akamai.com”
+    * The query should return the IP address of the resolver, as seen by the authoritative DNS servers run by Akamai.
+    * We record: request time, AS number of the resolver IP.
+* Checking if the resolver supports IPv6-only sites.
+    * It is possible to setup a domain that could be resolved only if the recursive resolver has IPv6 connectivity. An example is “ds.v6ns.test-ipv6.ams.vr.org”, used by the test-ipv6.com website.
+
+
+We query the resolvers for the above features, and record the results in ARFF file format, used by popular data analysis environments, as Weka and RapidMiner.
+
+Next, we train machine learning algorithms, C4.5 Decision Tree (in Weka) and Random Forests (in scikit-learn), building models for expected and not-expected server behavior.
+
+Finally, using a separate testing dataset, we classify the fingerprints into two classes: valid (ok) and hijacked (non-ok). Thus, the computer is able to assess the probability of user connecting to a valid server by issuing a few DNS queries and running a machine learning algorithm.
 
 
 # Implementation
