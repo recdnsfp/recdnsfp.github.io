@@ -2,9 +2,9 @@
 ![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/vingerprintDNS.jpg)
 
 # Problem
-Google and a few other companies provide open dns resolvers to the people around the globe. Unfortunately it may happen that the resolver was hijacked and used for different purposes, such as redirecting to malicious pages or to block certain adresses (censorship).
+Google and a few other companies provide open dns resolvers to the people around the globe. Unfortunately it may happen that the resolver was hijacked and used for different purposes, such as redirecting to malicious pages or to block certain addresses (censorship).
 
-Our goal is to identify hijacked resolver by analyzing its fingerprint to increase safety of users. To do that we utilize data collected via atlas.ripe.net.
+Our goal is to identify hijacked resolvers by analyzing their fingerprints, in order to increase safety of Internet users. To do that, we utilize data collected via RIPE Atlas (atlas.ripe.net).
 
 # Solution
 
