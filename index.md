@@ -140,6 +140,17 @@ Resolvers that were classified as hijacked had significantly longer RTT for a DN
    0.674   14.860   30.020   43.560   62.050 1737.000 
 ```
 
+This assumption seems to be confirmed by the results of a query for hostname.bind CHAOS record. DNS RTT for such queries from hijacked servers was much shorter, that it because it didn't involve name resolution process.
+
+```
+> summary(df[which(df$ok==0),]$chaos1_rt)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   1.214    2.591   12.450   43.530   34.730 1455.000 
+> summary(df[which(df$ok==1),]$chaos1_rt)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   0.547   13.440   27.690   41.110   56.310 3176.000 
+```
+
 # How to use it
 At first we need to setup environment:
 ```
