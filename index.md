@@ -8,10 +8,11 @@ Our goal is to identify hijacked resolvers by analyzing their fingerprints, in o
 
 # Solution
 
+
 # Implementation
 
 
-# Data
+# Results
 ## TOP 20 countries (hijack %)
 ![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/perc.png)
 
@@ -125,9 +126,19 @@ Our goal is to identify hijacked resolvers by analyzing their fingerprints, in o
 |9121   |  1|    0|
 |N/A    |  7|    0|
 
-# Summary 
+## Weka
+![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/weka-tree.png)
 
 # Interesting cases
+Resolvers that were classified as hijacked had significantly longer RTT for a DNS query. While PING RTT was expected to be shorter, we consider longer DNS RTT to be justified. That is because hijacked resolver was isolated and had to perform full name resolution process, while 8.8.8.8 server most likely had already a proper RR in its cache (presumably many of RIPE Atlas probes queried the same instance of Google Public DNS).
+```
+> summary(df[which(df$ok==0),]$whoami_rt)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   1.892   13.740   40.530  113.300   87.100 3718.000 
+> summary(df[which(df$ok==1),]$whoami_rt)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   0.674   14.860   30.020   43.560   62.050 1737.000 
+```
 
 # How to use it
 At first we need to setup environment:
