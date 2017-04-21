@@ -12,7 +12,8 @@ Our goal is to identify hijacked resolver by analyzing its fingerprint to increa
 
 
 # Data
-TOP 20 countries (hijack %)
+## TOP 20 countries (hijack %)
+![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/perc.png)
 
 | no|cc | total_probes| hijacked|perc_hijacked |
 |--:|:--|------------:|--------:|:-------------|
@@ -38,8 +39,8 @@ TOP 20 countries (hijack %)
 | 20|BG |           71|        2|2.8 %         |
 
 
-
-TO 20 countries (hijack number)
+## TOP 20 countries (hijack number)
+![recdnsfp](https://raw.githubusercontent.com/recdnsfp/recdnsfp.github.io/master/images/hijacked.png)
 
 | no|cc | total_probes| hijacked|perc_hijacked |
 |--:|:--|------------:|--------:|:-------------|
@@ -65,9 +66,7 @@ TO 20 countries (hijack number)
 | 20|AR |           26|        1|3.8 %         |
 
 
-
-whoami_asn vs ok
-
+## whoami_asn vs ok
 
 |       |  0|    1|
 |:------|--:|----:|
