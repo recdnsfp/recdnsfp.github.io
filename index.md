@@ -271,3 +271,10 @@ test: ok=4347   err=0
 We did our analysis only for Google Public DNS, but we highlight that our method is not limited to Google, and can easily be applied to other operators as well.
 
 Our fingerprinting approach can also be used to detect a somehow opposite problem: an ISP pretending to be operating their own caching recursive DNS servers, but in reality redirecting their traffic to Google or OpenDNS resolvers.
+
+# Credits
+Made on RIPE DNS measurements hackathon by:
+* Pawel Foremski
+* Maciej Andzinski
+* Mateusz Kaczanowski
+* Marta van der Haagen (graphics)
